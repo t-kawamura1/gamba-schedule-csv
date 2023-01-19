@@ -12,7 +12,8 @@ const stringifySync = require("csv-stringify/sync");
   /** 試合ごとのトップ要素 */
   const gameSelector = '.game_schedule_list > li';
 
-  const game = await page.$$eval(gameSelector, g => g.map((li, i) => {
+  /** 取得する全試合日程 */
+  const gameSchedule = await page.$$eval(gameSelector, g => g.map((li, i) => {
     const currentYear = new Date().getFullYear();
 
     /** 対戦相手 */
@@ -29,11 +30,11 @@ const stringifySync = require("csv-stringify/sync");
     /** 開始時間 */
     const startTime = li.querySelector('.game_schedule_list_detail_sche_time').textContent;
 
-    const startTimeArr = startTime.split(':')
-    /** 終了時間 */
+    const startTimeArr = startTime.split(':');
+    /** 終了時間(開始時間の2時間後) */
     const endTime = startTime.length === 0
       ? ''
-      : `${Number(startTimeArr[0]) + 2}:${startTimeArr[1]}`
+      : `${Number(startTimeArr[0]) + 2}:${startTimeArr[1]}`;
 
     /** 日程の補足 */
     const description = li.querySelector('.game_schedule_list_detail_sche_or') == null
@@ -53,11 +54,10 @@ const stringifySync = require("csv-stringify/sync");
       description,
       location,
       private: false
-    }
+    };
   }));
-  // console.log(game);
 
-  const csvString = stringifySync.stringify(game, {
+  const csvString = stringifySync.stringify(gameSchedule, {
     header: true
   });
 
