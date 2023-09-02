@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. 最初のイメージ立ち上げコマンド：",
   "main": "ex1.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,5 +13,14 @@
     "csv-stringify": "^6.2.3",
     "iconv-lite": "^0.6.3",
     "puppeteer": "^19.5.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t-kawamura1/gamba-schecule-csv.git"
+  },
+  "bugs": {
+    "url": "https://github.com/t-kawamura1/gamba-schecule-csv/issues"
+  },
+  "homepage": "https://github.com/t-kawamura1/gamba-schecule-csv#readme"
 }

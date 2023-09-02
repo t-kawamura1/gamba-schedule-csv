@@ -13,7 +13,7 @@ const stringifySync = require("csv-stringify/sync");
   const gameSelector = '.game_schedule_list > li';
 
   /** 取得する全試合日程 */
-  const gameSchedule = await page.$$eval(gameSelector, g => g.map((li, i) => {
+  const gameSchedule = await page.$$eval(gameSelector, g => g.map((li, _) => {
     const currentYear = new Date().getFullYear();
 
     /** 対戦相手 */
